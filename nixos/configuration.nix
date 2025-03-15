@@ -19,6 +19,10 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
+    # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
 
   nixpkgs = {
     # You can add overlays here
@@ -81,9 +85,9 @@
 
 
   hardware.pulseaudio.enable = false;
-  security.rkit.enable = true;
+  security.rtkit.enable = true;
   services.pipewire = {
-    enabled = true;
+    enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
