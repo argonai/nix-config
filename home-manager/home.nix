@@ -50,20 +50,27 @@
   programs.neovim.enable = true;
   programs.tmux.enable = true;
 
- # xdg.configFile = {
- #   nvim.source = ./conf/nvim;
- # };
+ xdg.configFile = {
+   nvim = {
+    source = ./conf/nvim;
+    target = "nvim";
+    recursive = true;
+    enable = true; 
+    };
+ };
 
   home.packages = with pkgs; [ 
     gnumake
-    gcc
     unzip
     discord
     lazygit
+    clang
+    (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
   ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
+  programs.kitty.enable = true;
   programs.git = {
     enable = true;
     userName = "argonai";
