@@ -14,6 +14,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    inputs.moonlight.homeModules.default
   ];
 
   nixpkgs = {
@@ -51,7 +52,7 @@
 #    nvim.source = ./nvim;
 #  };
 
-  # home.packages = with pkgs; [ steam ];
+#  home.packages = with pkgs; [ ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
@@ -60,6 +61,27 @@
     userName = "argonai";
     userEmail = "argonai@protonmail.com";
   };
+  
+  programs.moonlight-mod = {
+    enable = true;
+    configs.stable = {
+
+    stable = {
+      extensions = {
+        allActivites.enabled = true;
+        alwaysFocus.enabled = true;
+
+        betterEmbedsYT = {
+          enabled = true;
+          config = {
+            fullDescription = false;
+            expandDescription = true;
+              };
+            };
+          };
+        };
+      };
+    };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

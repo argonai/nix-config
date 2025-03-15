@@ -8,6 +8,10 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    moonlight = {
+      url = "github:moonlight-mod/moonlight"; # Add `/develop` to the flake URL to use nightly.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
