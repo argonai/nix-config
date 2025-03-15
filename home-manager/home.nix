@@ -22,6 +22,7 @@
     overlays = [
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
+      inputs.moonlight.overlays.default
 
       # Or define it inline, for example:
       # (final: prev: {
@@ -47,12 +48,19 @@
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
+  programs.tmux.enable = true;
 
-#  xdg.configFile = {
-#    nvim.source = ./nvim;
-#  };
+ # xdg.configFile = {
+ #   nvim.source = ./conf/nvim;
+ # };
 
-#  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [ 
+    gnumake
+    gcc
+    unzip
+    discord
+    lazygit
+  ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
