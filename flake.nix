@@ -12,6 +12,7 @@
       url = "github:moonlight-mod/moonlight"; # Add `/develop` to the flake URL to use nightly.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+  zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = {
@@ -34,6 +35,7 @@
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
+      #homeManagerModules = import ./home/modules;
     homeConfigurations = {
       # FIXME replace with your username@hostname
       "argonai@lilith" = home-manager.lib.homeManagerConfiguration {

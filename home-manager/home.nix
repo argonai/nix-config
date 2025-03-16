@@ -58,14 +58,21 @@
     enable = true; 
     };
  };
-
+  # TODO: split packages more
   home.packages = with pkgs; [ 
     gnumake
     unzip
     discord
     lazygit
     clang
+    ripgrep
     (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
+    gopls
+    pyright
+    typescript-language-server
+    astro-language-server
+    inputs.zen-browser.packages."${system}".default
+    rustup
   ];
 
   # Enable home-manager and git
