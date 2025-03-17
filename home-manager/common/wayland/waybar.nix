@@ -78,7 +78,7 @@ in
         };
     "custom/power-menu"= {
         format= " <span color='#7eb3c9'>⏻ </span>";
-        on-click= "bash ~/.config/waybar/scripts/power-menu/powermenu.sh";
+        on-click= "bash ${scriptsDir}/power-menu/powermenu.sh";
     };
     "custom/launcher"= {
         format= " <span size='x-large' color='#7eb3c9'>󱄅 </span>";

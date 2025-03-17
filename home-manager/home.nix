@@ -79,6 +79,7 @@
     inputs.zen-browser.packages."${system}".default
     rustup
     rofi-wayland
+    playerctl
   ];
 
   # Enable home-manager and git
