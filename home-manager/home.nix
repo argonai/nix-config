@@ -77,7 +77,10 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    themeFile = "kanagawa_dragon";
+  };
   programs.git = {
     enable = true;
     userName = "argonai";
