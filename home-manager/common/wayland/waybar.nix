@@ -4,6 +4,9 @@
   lib,
   ...
 }:
+let
+  scriptsDir = ./scripts;
+in 
 {
   programs.waybar = {
     enable = true;
@@ -61,7 +64,7 @@
         network = {
           format-wifi= "直 {signalStrength}%";
           format-ethernet= " wired";
-          on-click= "bash ~/.config/waybar/scripts/rofi-wifi-menu.sh";
+          on-click= "bash ${scriptsDir}/rofi-wifi-menu.sh";
           format-disconnected= "Disconnected  ";
         };
         pulseaudio = {
@@ -73,6 +76,27 @@
             default= ["" "" ""];
           };
         };
+    "custom/power-menu"= {
+        format= " <span color='#7eb3c9'>⏻ </span>";
+        on-click= "bash ~/.config/waybar/scripts/power-menu/powermenu.sh";
+    };
+    "custom/launcher"= {
+        format= " <span size='x-large' color='#7eb3c9'>󱄅 </span>";
+        on-click= "rofi -show drun";
+    };
+    "custom/media"= {
+        format= "{icon} {text}";
+        return-type= "json";
+        format-icons= {
+            Playing= " ";
+            Paused= " ";
+        };
+        max-length=70;
+        exec= "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+        on-click= "playerctl play-pause";
+        on-scroll-up= "playerctl next";
+        on-scroll-down= "playerctl previous";
+    };
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
