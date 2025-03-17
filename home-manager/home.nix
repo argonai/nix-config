@@ -17,7 +17,7 @@
     inputs.moonlight.homeModules.default
     ./common
     ./common/shell
-    ./common/nvim
+    ./common/wayland
   ];
 
   nixpkgs = {
@@ -50,8 +50,17 @@
   };
 
   # Add stuff for your user as you see fit:
+  programs.neovim.enable = true;
   programs.tmux.enable = true;
 
+ xdg.configFile = {
+   nvim = {
+    source = ./conf/nvim;
+    target = "nvim";
+    recursive = true;
+    enable = true; 
+    };
+ };
   # TODO: split packages more
   home.packages = with pkgs; [ 
     gnumake
@@ -62,12 +71,14 @@
     ripgrep
     (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
     gopls
+    font-awesome
     go
     pyright
     typescript-language-server
     astro-language-server
     inputs.zen-browser.packages."${system}".default
     rustup
+    rofi-wayland
   ];
 
   # Enable home-manager and git

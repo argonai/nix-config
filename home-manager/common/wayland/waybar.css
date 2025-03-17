@@ -1,15 +1,18 @@
 * {
-  border: none;
-  border-radius: 0;
-  font-family: '@font@', 'DroidSansM Nerd Font Mono', sans-serif;
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 17px;
 }
 
 window#waybar {
-  background-color: rgba(31, 31, 31, 0.9);
-  border-bottom: 0px;
-  color: #eee;
+  background-color: rgba(0, 0, 0, 0);
+  color: #DDD8BB;
   transition-property: background-color;
-  transition-duration: 0.7s;
+  transition-duration: 0.5s;
+  border-top: 8px transparent;
+  border-radius: 8px;
+  transition-duration: 0.5s;
+  margin: 16px 16px;
 }
 
 window#waybar.hidden {
@@ -18,38 +21,45 @@ window#waybar.hidden {
 
 #workspaces button {
   padding: 0 5px;
+  color: #DDD8BB;
   background-color: transparent;
-  color: #eee;
   /* Use box-shadow instead of border so the text isn't offset */
   box-shadow: inset 0 -3px transparent;
-  min-width: 30px;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-  background: rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 -3px #ffffff;
+  /* Avoid rounded borders under each workspace name */
+  border: none;
+  border-radius: 0;
 }
 
 #workspaces button.focused {
-  background-color: #4f4f4f;
-  box-shadow: inset 0 -3px #ffffff;
+  color: #e46a78;
+}
+
+#workspaces button.active {
+  color: #98BC6D;
 }
 
 #workspaces button.urgent {
-  background-color: #00bcd4;
+  background-color: #eb4d4b;
 }
 
-#mode {
-  background-color: #64727d;
-  border-bottom: 3px solid #ffffff;
+#window {
+  color: #DDD8BB;
+  padding: 0 5px;
+}
+
+window#waybar.empty #window {
+  background: none;
+}
+
+#window label {
+  font-size: 13px;
 }
 
 #clock,
-#custom-clock,
 #battery,
 #cpu,
 #memory,
+#disk,
 #temperature,
 #backlight,
 #network,
@@ -58,22 +68,86 @@ window#waybar.hidden {
 #tray,
 #mode,
 #idle_inhibitor,
-#custom-uptime,
-#custom-load,
-#disk,
-#custom-notifs,
-#power-profiles-daemon,
-#privacy {
+#mpd,
+#bluetooth,
+#custom-hyprPicker,
+#custom-power-menu,
+#custom-spotify,
+#custom-weather,
+#custom-weather.severe,
+#custom-weather.sunnyDay,
+#custom-weather.clearNight,
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight,
+#custom-weather.rainyDay,
+#custom-weather.rainyNight,
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight,
+#custom-weather.default {
   padding: 0 10px;
-  margin: 0 4px;
-  color: #fff;
-  font-size: 13px;
-  background-color: #333;
+  color: #7eb3c9;
+  /* color: #e46a78; */
+  border-radius: 9.5px;
+  background-color: #1f1f28;
 }
 
 #window,
 #workspaces {
   margin: 0 4px;
+  border-radius: 7.8px;
+  background-color: #1f1f28;
+}
+
+#cpu {
+  color: #e46a78;
+}
+
+#memory {
+  color: #e5c283;
+}
+
+#custom-power-menu {
+  border-radius: 9.5px;
+  border-radius: 7.5px;
+  padding: 0 5px;
+}
+
+#custom-launcher {
+  background-color: #1f1f28;
+  color: #7eb3c9;
+  border-radius: 7.5px;
+  padding: 0 3px;
+}
+
+#custom-weather.severe {
+  color: #eb937d;
+}
+
+#custom-weather.sunnyDay {
+  color: #c2ca76;
+}
+
+#custom-weather.clearNight {
+  color: #cad3f5;
+}
+
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight {
+  color: #c2ddda;
+}
+
+#custom-weather.rainyDay,
+#custom-weather.rainyNight {
+  color: #5aaca5;
+}
+
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight {
+  color: #d6e7e5;
+}
+
+#custom-weather.default {
+  color: #dbd9d8;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -86,19 +160,44 @@ window#waybar.hidden {
   margin-right: 0;
 }
 
+#pulseaudio {
+  color: #7eb3c9;
+}
+
+#backlight {
+  /* color: #EBCB8B; */
+  color: #8fbcbb;
+}
+
+#clock {
+  color: #e46a78;
+  /* background-color: #14141e; */
+}
+
+#battery {
+  color: #c0caf5;
+  /* background-color: #90b1b1; */
+}
+
+#battery.charging,
+#battery.full,
+#battery.plugged {
+  color: #26a65b;
+  /* background-color: #26a65b; */
+}
+
 @keyframes blink {
-  50% {
-    background-color: #ffffff;
-    color: #000000;
+  to {
+    background-color: rgba(30, 34, 42, 0.5);
+    color: #abb2bf;
   }
 }
 
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
+  color: #f53c3c;
   animation-name: blink;
   animation-duration: 0.5s;
-  animation-timing-function: steps(2, start);
+  animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
@@ -107,13 +206,59 @@ label:focus {
   background-color: #000000;
 }
 
+#disk {
+  background-color: #1f1f28;
+}
+
+#bluetooth {
+  color: #707d9d;
+}
+
+#bluetooth.disconnected {
+  color: #f53c3c;
+}
+
+#network {
+  color: #957FB8;
+}
+
+#network.disconnected {
+  color: #f53c3c;
+}
+
+#custom-media {
+  background-color: #1f1f28;
+  color: #DDD8BB;
+  min-width: 100px;
+  font-size: 13px;
+}
+
+#custom-media.custom-spotify {
+  background-color: #1f1f28;
+}
+
+#custom-media.custom-vlc {
+  background-color: #1f1f28;
+}
+
+#temperature {
+  background-color: #f0932b;
+}
+
 #temperature.critical {
   background-color: #eb4d4b;
 }
 
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
+}
+
 #idle_inhibitor {
-  font-size: 20px;
-  min-width: 20px;
   background-color: #2d3436;
 }
 
@@ -122,22 +267,53 @@ label:focus {
   color: #2d3436;
 }
 
-#idle_inhibitor.deactivated {
-  background-color: #333;
-  color: #eee;
+#mpd {
+  color: #2a5c45;
 }
 
-#custom-notifs {
-  font-size: 18px;
-  min-width: 20px;
-  background-color: #333;
+#mpd.disconnected {
+  color: #f53c3c;
 }
 
-#custom-notifs.notification,
-#custom-notifs.dnd-notification {
-  background-color: #4f4f4f;
+#mpd.stopped {
+  color: #90b1b1;
 }
 
-#custom-notifs.notification {
-  box-shadow: inset 0 -3px #ffffff;
+#mpd.paused {
+  color: #51a37a;
+}
+
+#language {
+  background: #00b093;
+  color: #740864;
+  padding: 0 5px;
+  margin: 0 5px;
+  min-width: 16px;
+}
+
+#keyboard-state {
+  background: #97e1ad;
+  color: #000000;
+  padding: 0 0px;
+  margin: 0 5px;
+  min-width: 16px;
+}
+
+#keyboard-state > label {
+  padding: 0 5px;
+}
+
+#custom-spotify {
+  padding: 0 10px;
+  margin: 0 4px;
+  /* background-color: #1db954; */
+  color: #abb2bf;
+}
+
+#keyboard-state > label.locked {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#custom-media {
+  background-color: #1f1f28;
 }

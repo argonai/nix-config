@@ -45,7 +45,6 @@ let
   '';
 in
 {
-  home.packages = with pkgs; [ wl-mirror ];
   wayland.windowManager.niri = {
     enable = true;
     configFile = pkgs.substituteAll {
@@ -55,7 +54,7 @@ in
       swaybg = "${pkgs.swaybg}";
       copyq = "${pkgs.copyq}";
       cursorTheme = "${config.gtk.cursorTheme.name}";
-      foot = "${pkgs.foot}";
+      kitty = "${pkgs.kitty}";
       fuzzel = "${pkgs.fuzzel}";
       swaylock = "${pkgs.swaylock}";
       wireplumber = "${pkgs.wireplumber}";
@@ -63,10 +62,11 @@ in
       brightnessctl = "${pkgs.brightnessctl}";
       bemoji = "${pkgs.bemoji}";
       swayexitify = "${swayexitify}";
-      wallpaper = ../wallpapers/jwst-Cassiopeia-A-NIRCam.png;
+      wallpaper = ../wallpapers/ranni_saberiii.jpg;
       swayr = "${pkgs.swayr}";
       xwaylandSatellite = "${pkgs.xwayland-satellite}";
       niriswitch = "${niriswitch}";
+      waybar = "${pkgs.waybar}";
     };
   };
 

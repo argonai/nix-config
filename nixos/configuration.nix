@@ -22,6 +22,7 @@
     # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
 
 
   nixpkgs = {
@@ -76,6 +77,9 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  programs.niri.enable = true;
+  environment.systemPackages = with pkgs; [
+  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -91,6 +95,16 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+  };
+  services.dbus.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = false;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
+    ];
+    config.common.default = "*";
   };
   services.printing.enable = true;
   networking.hostName = "lilith";

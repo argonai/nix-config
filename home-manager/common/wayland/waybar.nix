@@ -11,191 +11,67 @@
       enable = true;
     };
     settings = {
-      bottomBar = {
-        layer = "top";
-        position = "bottom";
-        height = 24;
-        modules-left = [
-          "sway/workspaces"
-          "niri/workspaces"
-          "sway/mode"
-          "sway/window"
-          "niri/window"
-        ];
-        modules-right = [
-          "custom/uptime"
-          "backlight"
-          "pulseaudio"
-          "battery"
-          "clock"
-          "tray"
-        ];
-        "sway/workspaces" = {
-          all-outputs = false;
-          format = "{index}";
-          disable-scroll = false;
-          disable-click = false;
-          enable-bar-scroll = false;
-          numeric-first = true;
-        };
-        "niri/workspaces" = {
-          format = "{value}";
-        };
-        "sway/mode" = {
-          format = "{}";
-          tooltip = false;
-          on-click = "";
-        };
-        "sway/window" = {
-          format = "{}";
-          max-length = 64;
-          on-click = "";
-        };
-        "niri/window" = {
-          format = "{}";
-        };
-        "custom/uptime" = {
-          format = "{}";
-          return-type = "";
-          interval = 10;
-          exec = "${pkgs.coreutils}/bin/uptime | ${pkgs.gnused}/bin/sed 's/^.* up \\+\\(.\\+\\), \\+[0-9] user.*$/\\1/' | ${pkgs.gnused}/bin/sed 's/  / /g'";
-          on-click = "";
-        };
-        backlight = {
-          device = "intel_backlight";
-          format = "{percent}%";
-          on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set 5%+";
-          on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set 5%-";
-          on-click = "";
-        };
-        pulseaudio = {
-          format = "{volume}%";
-          format-muted = "muted";
-          scroll-step = 5;
-          on-click = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-        };
-        battery = {
-          format = "{capacity}% {time}h";
-          format-time = "{H:02}:{M:02}";
-          on-click = "";
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-        };
-        clock = {
-          interval = 1;
-          format = "{:%F %H:%M:%S}";
-          on-click = "";
-        };
-        tray = {
-          icon-size = 30;
-          spacing = 8;
-        };
-      };
       topBar = {
         layer = "top";
         position = "top";
-        height = 24;
+        height = 33;
+        margin-top = 6;
+        margin-left = 10;
+        margin-bottom = 0;
+        margin-right = 10;
+        spacing = 5;
         modules-left = [
-          "custom/notifs"
-          "idle_inhibitor"
-          "privacy"
-          "custom/load"
+          "custom/launcher"
           "cpu"
           "memory"
+          "niri/workspaces"
+          "custom/media"
         ];
+        modules-center = ["niri/window"];
         modules-right = [
-          "power-profiles-daemon"
-          "temperature"
-          "disk#root"
-          "disk#home"
-          "network#wlp59s0"
-          "network#wl0"
-          "network#enp58s0u1u4"
+          "tray"
+          "pulseaudio"
+          "privacy"
+          "idle_inhibitor"
+          "network"
+          "clock"
+          "custom/power-menu"
         ];
-        "sway/workspaces" = {
-          all-outputs = false;
-          format = "{index}";
-          disable-scroll = false;
-          disable-click = false;
-          enable-bar-scroll = false;
-          numeric-first = true;
+        "niri/window" = {
+          format = "{:.40}";
         };
-        "custom/load" = {
-          format = "{}";
-          exec = "${pkgs.coreutils}/bin/echo -n \"Load \"; ${pkgs.coreutils}/bin/cat /proc/loadavg | ${pkgs.coreutils}/bin/cut -f1-3 -d' '";
-          interval = 5;
-          on-click = "";
+        tray = {
+          spacing = 10;
+        };
+        clock = {
+          format = "<span color='#bf616a'> </span>{:%d.%m  %H:%M (%a)}";
         };
         cpu = {
-          interval = 1;
-          format = "CPU {usage}%";
+          interval = 30;
+          format = "";
           max-length = 10;
           on-click = "";
         };
         memory = {
-          interval = 30;
-          format = "RAM: {used:0.1f}G/{total:0.1f}G";
-          on-click = "";
+          interval= 30;
+          format= " {}%";
+          format-alt=" {used:0.1f}G";
+          max-length= 10;
         };
-        temperature = {
-          hwmon-path = "/sys/class/hwmon/hwmon5/temp1_input";
-          critical-threshold = 90;
-          format-critical = "HOT {temperatureC}°C";
-          format = "{temperatureC}°C";
-          on-click = "";
+        network = {
+          format-wifi= "直 {signalStrength}%";
+          format-ethernet= " wired";
+          on-click= "bash ~/.config/waybar/scripts/rofi-wifi-menu.sh";
+          format-disconnected= "Disconnected  ";
         };
-        "disk#root" = {
-          interval = 30;
-          format = "{path}: {percentage_used}%";
-          path = "/";
-          on-click = "";
-        };
-        "disk#home" = {
-          interval = 30;
-          format = "{path}: {percentage_used}%";
-          path = "/home";
-          on-click = "";
-        };
-        "network#wl0" = {
-          interface = "w*";
-          format = "{ifname}: {ipaddr}";
-          format-wifi = "{essid} ({signalStrength}%)";
-          format-ethernet = "{ifname}";
-          format-disconnected = "";
-          tooltip-format = "{ifname}";
-          tooltip-format-wifi = "{essid} ({signalStrength}%)";
-          tooltip-format-ethernet = "{ifname}";
-          tooltip-format-disconnected = "Disconnected";
-          max-length = 50;
-          on-click = "";
-        };
-        "network#wlp59s0" = {
-          interface = "wlp59s0";
-          format = "{ifname}: {ipaddr}";
-          format-wifi = "{essid} ({signalStrength}%)";
-          format-ethernet = "{ifname}";
-          format-disconnected = "";
-          tooltip-format = "{ifname}";
-          tooltip-format-wifi = "{essid} ({signalStrength}%)";
-          tooltip-format-ethernet = "{ifname}";
-          tooltip-format-disconnected = "Disconnected";
-          max-length = 50;
-          on-click = "";
-        };
-        "network#enp58s0u1u4" = {
-          interface = "enp58s0u1u4";
-          format = "{ifname}: {ipaddr} {bandwidthUpBits} up, {bandwidthDownBits} down";
-          format-wifi = "{essid} ({signalStrength}%)";
-          format-ethernet = "{ifname}: {ipaddr}";
-          format-disconnected = "{ifname}: disconnected";
-          tooltip-format = "{ifname}";
-          tooltip-format-wifi = "{essid} ({signalStrength}%)";
-          tooltip-format-ethernet = "{ifname}";
-          tooltip-format-disconnected = "Disconnected";
-          max-length = 50;
-          on-click = "";
+        pulseaudio = {
+          format= "{icon} {volume}%";
+          format-bluetooth= "  {volume}%";
+          format-bluetooth-muted= " ";
+          format-muted= "婢";
+          format-icons= {
+            default= ["" "" ""];
+          };
         };
         idle_inhibitor = {
           format = "{icon}";
