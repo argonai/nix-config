@@ -17,6 +17,7 @@
     inputs.moonlight.homeModules.default
     ./common
     ./common/shell
+    ./common/nvim
   ];
 
   nixpkgs = {
@@ -49,17 +50,8 @@
   };
 
   # Add stuff for your user as you see fit:
-  programs.neovim.enable = true;
   programs.tmux.enable = true;
 
- xdg.configFile = {
-   nvim = {
-    source = ./conf/nvim;
-    target = "nvim";
-    recursive = true;
-    enable = true; 
-    };
- };
   # TODO: split packages more
   home.packages = with pkgs; [ 
     gnumake
@@ -70,6 +62,7 @@
     ripgrep
     (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
     gopls
+    go
     pyright
     typescript-language-server
     astro-language-server
