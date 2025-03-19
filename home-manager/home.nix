@@ -51,7 +51,6 @@
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
-  programs.tmux.enable = true;
 
  xdg.configFile = {
    nvim = {
@@ -63,6 +62,7 @@
  };
   # TODO: split packages more
   home.packages = with pkgs; [ 
+    direnv
     gnumake
     unzip
     discord

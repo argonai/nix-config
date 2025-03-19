@@ -5,6 +5,9 @@
   ...
 }:
 {
+  programs.tmux = {
+    enable = true;
+  };
   programs.starship.enable = true;
   programs.zoxide = {
     enable = true;

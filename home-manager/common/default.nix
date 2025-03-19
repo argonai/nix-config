@@ -45,5 +45,5 @@
   # IDK why this is useful and it takes a while to run during builds so I disable it
   programs.man.generateCaches = false;
   # I'll find the commands myself, thanks (also it takes a while to find the command)
-  programs.command-not-found.enable = false;
+  programs.command-not-found.enable = true;
 }
