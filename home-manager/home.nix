@@ -71,7 +71,6 @@
     ripgrep
     (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
     gopls
-    font-awesome
     go
     pyright
     typescript-language-server
@@ -80,6 +79,15 @@
     rustup
     rofi-wayland
     playerctl
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+    terminus_font
+    dejavu_fonts
+    #    powerline-fonts
+    font-awesome
+    corefonts
+    vistafonts
   ];
 
   # Enable home-manager and git

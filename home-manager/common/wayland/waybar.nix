@@ -36,6 +36,7 @@ in
           "pulseaudio"
           "privacy"
           "idle_inhibitor"
+          "battery"
           "network"
           "clock"
           "custom/power-menu"
@@ -60,6 +61,9 @@ in
           format= " {}%";
           format-alt=" {used:0.1f}G";
           max-length= 10;
+        };
+        battery = {
+          interval = 60;
         };
         network = {
           format-wifi= "直 {signalStrength}%";
