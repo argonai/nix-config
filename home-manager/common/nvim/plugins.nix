@@ -3,7 +3,7 @@
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
       # Dependencies
-      plenary-nvim
+      kanagawa-nvim
 
       {
         plugin = nvim-autopairs;

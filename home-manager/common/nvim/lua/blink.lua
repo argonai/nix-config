@@ -1,6 +1,9 @@
 local blink = require("blink.cmp")
 blink.setup({
-	keymap = { preset = "default" },
+	keymap = { 
+		preset = "default",
+		['<Tab>'] = { 'select_and_accept' },
+	},
 
 	appearance = {
 		-- Sets the fallback highlight groups to nvim-cmp's highlight groups

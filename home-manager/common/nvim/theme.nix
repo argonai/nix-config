@@ -3,7 +3,7 @@
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
       # Theme
-      material-nvim
+      kanagawa-nvim
       {
         plugin = lualine-nvim;
         type = "lua";
@@ -33,12 +33,16 @@
     ];
 
     extraLuaConfig = ''
-      require('material').setup({
-        disable = {
-          background = true, 
-        },
+      require('kanagawa').setup({
+        theme = "wave",
+        overrides = function(colors)
+          local theme = colors.theme
+          return {
+
+          }
+        end,
       })
-      vim.cmd("colorscheme material")
+      vim.cmd("colorscheme kanagawa")
     '';
   };
 }

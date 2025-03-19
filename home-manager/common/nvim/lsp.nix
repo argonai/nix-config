@@ -84,12 +84,12 @@
         ];
       }
 
-      # {
-      #   plugin = blink-cmp;
-      #   type = "lua";
-      #   config = (builtins.readFile ./lua/blink.lua);
-      # }
-      # friendly-snippets
+      {
+        plugin = blink-cmp;
+        type = "lua";
+        config = (builtins.readFile ./lua/blink.lua);
+      }
+      friendly-snippets
     ];
   };
 }
