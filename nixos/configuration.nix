@@ -30,6 +30,7 @@
     overlays = [
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
+      inputs.rust-overlay.overlays.default
 
       # Or define it inline, for example:
       # (final: prev: {
@@ -79,6 +80,7 @@
   services.xserver.desktopManager.gnome.enable = true;
   programs.niri.enable = true;
   environment.systemPackages = with pkgs; [
+pkgs.rust-bin.stable.latest.default
   ];
 
   # Configure keymap in X11

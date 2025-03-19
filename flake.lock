@@ -151,7 +151,28 @@
         "home-manager": "home-manager",
         "moonlight": "moonlight",
         "nixpkgs": "nixpkgs_2",
+        "rust-overlay": "rust-overlay",
         "zen-browser": "zen-browser"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1742351546,
+        "narHash": "sha256-GPubFcOXyi8TVm1xpltHYPcfGr+iO+if2u/EtzFVnHQ=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "b0a7450168c62a46f87d204280e6d9d1c0292671",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "systems": {

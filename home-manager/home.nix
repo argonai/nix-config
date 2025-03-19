@@ -18,6 +18,7 @@
     ./common
     ./common/shell
     ./common/wayland
+    ./common/nvim
   ];
 
   nixpkgs = {
@@ -50,16 +51,18 @@
   };
 
   # Add stuff for your user as you see fit:
-  programs.neovim.enable = true;
+  programs.neovim = {
+    enable = true;
+  };
 
- xdg.configFile = {
-   nvim = {
-    source = ./conf/nvim;
-    target = "nvim";
-    recursive = true;
-    enable = true; 
-    };
- };
+ # xdg.configFile = {
+ #   nvim = {
+ #    source = ./conf/nvim;
+ #    target = "nvim";
+ #    recursive = true;
+ #    enable = true; 
+ #    };
+ # };
   # TODO: split packages more
   home.packages = with pkgs; [ 
     direnv
