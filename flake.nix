@@ -22,6 +22,18 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
+      overlays = import ./overlays { inherit inputs outputs; };
+    systems = [ "x86_64-linux" ];
+      pkgsFor = lib.genAttrs systems (
+        system:
+        import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = builtins.attrValues overlays;
+        }
+      );
+    forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -39,6 +51,7 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeManagerModules = import ./home-manager/modules;
+    devShells = forEachSystem (pkgs: import ./shells { inherit pkgs; });
     homeConfigurations = {
       # FIXME replace with your username@hostname
       "argonai@lilith" = home-manager.lib.homeManagerConfiguration {

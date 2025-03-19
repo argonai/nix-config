@@ -76,7 +76,6 @@
     typescript-language-server
     astro-language-server
     inputs.zen-browser.packages."${system}".default
-    rustup
     rofi-wayland
     playerctl
     noto-fonts
