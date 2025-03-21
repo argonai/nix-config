@@ -6,7 +6,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -49,22 +50,21 @@
     username = "argonai";
     homeDirectory = "/home/argonai";
   };
-
   # Add stuff for your user as you see fit:
   programs.neovim = {
     enable = true;
   };
 
- # xdg.configFile = {
- #   nvim = {
- #    source = ./conf/nvim;
- #    target = "nvim";
- #    recursive = true;
- #    enable = true; 
- #    };
- # };
+  # xdg.configFile = {
+  #   nvim = {
+  #    source = ./conf/nvim;
+  #    target = "nvim";
+  #    recursive = true;
+  #    enable = true;
+  #    };
+  # };
   # TODO: split packages more
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     direnv
     gnumake
     unzip
@@ -72,7 +72,12 @@
     lazygit
     clang
     ripgrep
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "JetBrainsMono"
+        "FiraCode"
+      ];
+    })
     gopls
     go
     pyright
@@ -103,27 +108,27 @@
     userName = "argonai";
     userEmail = "argonai@protonmail.com";
   };
-  
+
   programs.moonlight-mod = {
     enable = true;
     configs.stable = {
 
-    stable = {
-      extensions = {
-        allActivites.enabled = true;
-        alwaysFocus.enabled = true;
+      stable = {
+        extensions = {
+          allActivites.enabled = true;
+          alwaysFocus.enabled = true;
 
-        betterEmbedsYT = {
-          enabled = true;
-          config = {
-            fullDescription = false;
-            expandDescription = true;
-              };
+          betterEmbedsYT = {
+            enabled = true;
+            config = {
+              fullDescription = false;
+              expandDescription = true;
             };
           };
         };
       };
     };
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

@@ -89,6 +89,7 @@ pkgs.rust-bin.stable.latest.default
     variant = "";
   };
 
+  virtualisation.docker.enable = true;
 
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -121,7 +122,7 @@ pkgs.rust-bin.stable.latest.default
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel" "networkmanager"];
+      extraGroups = ["wheel" "networkmanager" "docker"];
       shell = pkgs.zsh;
     };
   };

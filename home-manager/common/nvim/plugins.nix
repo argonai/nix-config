@@ -30,7 +30,12 @@
         type = "lua";
         config = (builtins.readFile ./lua/comment.lua);
       }
-      neo-tree-nvim
+      {
+        plugin = neo-tree-nvim;
+        type = "lua";
+        config = (builtins.readFile ./lua/neotree.lua);
+      }
+      
       # Performance with big files
       bigfile-nvim
     ];
