@@ -38,11 +38,11 @@
       shellcheck
     ];
     plugins = with pkgs.vimPlugins; [
-      {
-        plugin = none-ls-nvim;
-        type = "lua";
-        config = (builtins.readFile ./lua/lsp/null-ls.lua);
-      }
+      # {
+      #   plugin = none-ls-nvim;
+      #   type = "lua";
+      #   config = (builtins.readFile ./lua/lsp/null-ls.lua);
+      # }
 
       # Misc LSP plugins
       nvim-jdtls

@@ -19,6 +19,7 @@ pkgs.mkShell {
     rust
   ] ++ (with pkgs; [
     pkg-config
+    openssl
     # other dependencies
     #gtk3
     #wrapGAppsHook

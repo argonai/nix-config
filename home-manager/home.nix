@@ -65,7 +65,8 @@
   # };
   # TODO: split packages more
   home.packages = with pkgs; [
-    direnv
+    rust-analyzer
+    hoppscotch
     gnumake
     unzip
     discord
@@ -95,6 +96,8 @@
     font-awesome
     corefonts
     vistafonts
+    obsidian
+    spotify
   ];
 
   # Enable home-manager and git
@@ -128,6 +131,10 @@
         };
       };
     };
+  };
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # Nicely reload system units when changing configs

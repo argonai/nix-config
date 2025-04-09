@@ -129,6 +129,7 @@ output "HDMI-A-1" {
     position x=0 y=0
 
 }
+
 layout {
 	focus-ring {
 		off // Disable focus ring, use border instead
