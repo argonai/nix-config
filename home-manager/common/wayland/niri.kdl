@@ -187,7 +187,7 @@ spawn-at-startup "@blueman@/bin/blueman-applet"
 spawn-at-startup "@swaybg@/bin/swaybg" "-i" "@wallpaper@" "-m" "fill"
 spawn-at-startup "@copyq@/bin/copyq"
 spawn-at-startup "@xwaylandSatellite@/bin/xwayland-satellite"
-spawn-at-startup "@waybar@/bin/waybar"
+// spawn-at-startup "@waybar@/bin/waybar"
 
 environment {
 	// Set a variable like this:
