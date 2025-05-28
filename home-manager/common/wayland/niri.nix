@@ -47,8 +47,7 @@ in
 {
   wayland.windowManager.niri = {
     enable = true;
-    configFile = pkgs.substituteAll {
-      src = ./niri.kdl;
+    configFile = pkgs.replaceVars ./niri.kdl {
       blueman = "${pkgs.blueman}";
       swaync = "${pkgs.swaynotificationcenter}";
       swaybg = "${pkgs.swaybg}";
@@ -56,17 +55,19 @@ in
       cursorTheme = "${config.gtk.cursorTheme.name}";
       kitty = "${pkgs.kitty}";
       fuzzel = "${pkgs.fuzzel}";
-      swaylock = "${pkgs.swaylock}";
+      # swaylock = "${pkgs.swaylock}";
       wireplumber = "${pkgs.wireplumber}";
       playerctl = "${pkgs.playerctl}";
       brightnessctl = "${pkgs.brightnessctl}";
-      bemoji = "${pkgs.bemoji}";
+      # bemoji = "${pkgs.bemoji}";
       swayexitify = "${swayexitify}";
       wallpaper = ../wallpapers/ranni_saberiii.jpg;
-      swayr = "${pkgs.swayr}";
+      # swayr = "${pkgs.swayr}";
       xwaylandSatellite = "${pkgs.xwayland-satellite}";
-      niriswitch = "${niriswitch}";
+      # niriswitch = "${niriswitch}";
       waybar = "${pkgs.waybar}";
+      DEFAULT_AUDIO_SINK = null;
+DEFAULT_AUDIO_SOURCE = null;
     };
   };
 

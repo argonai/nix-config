@@ -7,8 +7,7 @@
 {
   home.file."${config.xdg.configHome}/nvim/ftplugin/java.lua".text = (
     builtins.readFile (
-      pkgs.substituteAll {
-        src = ./lua/ftplugin/java.lua;
+      pkgs.replaceVars ./lua/ftplugin/java.lua {
         jdtls = pkgs.jdt-language-server;
         cachedir = config.xdg.cacheHome;
         jdk23 = pkgs.jdk23_headless;

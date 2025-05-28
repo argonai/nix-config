@@ -37,7 +37,7 @@ rec {
       home.packages = [ cfg.package ];
 
       # Creating an empty file on empty configuration is desirable, otherwise swayrd will create the file on startup.
-      xdg.configFile."niri/config.kdl" = {
+      xdg.configFile."~/.config/niri/config.kdl" = {
         source = cfg.configFile;
       };
     }

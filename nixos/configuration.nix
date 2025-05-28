@@ -91,7 +91,7 @@ pkgs.rust-bin.stable.latest.default
 
   virtualisation.docker.enable = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -142,5 +142,5 @@ pkgs.rust-bin.stable.latest.default
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 }

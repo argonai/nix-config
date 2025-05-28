@@ -393,7 +393,7 @@ binds {
 
     Mod+C { close-window; }
 	// Clipboard overlay
-	Control+Alt+H { spawn "@copyq@/bin/copyq" "menu"; }
+	// Control+Alt+H { spawn "@copyq@/bin/copyq" "menu"; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }

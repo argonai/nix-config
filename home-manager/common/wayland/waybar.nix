@@ -150,9 +150,7 @@ in
       };
     };
 
-    style = pkgs.substituteAll {
-      src = ./waybar.css;
-      font = config.gtk.font.name;
+    style = pkgs.replaceVars ./waybar.css {
     };
   };
 }
