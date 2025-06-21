@@ -88,6 +88,7 @@
     noto-fonts-emoji
     terminus_font
     dejavu_fonts
+    nodejs_24
     #    powerline-fonts
     font-awesome
     corefonts
