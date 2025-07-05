@@ -61,6 +61,7 @@
         type = "lua";
         config = lib.strings.concatStrings [
           (builtins.readFile ./lua/lsp/asmlsp.lua)
+          (builtins.readFile ./lua/lsp/angular.lua)
           (builtins.readFile ./lua/lsp/bash.lua)
           (builtins.readFile ./lua/lsp/ccls.lua)
           (builtins.readFile ./lua/lsp/cmake.lua)
