@@ -57,7 +57,6 @@
     homeManagerModules = import ./home-manager/modules;
     devShells = forEachSystem (pkgs: import ./shells { inherit pkgs; });
     homeConfigurations = {
-      # FIXME replace with your username@hostname
       "argonai@lilith" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};

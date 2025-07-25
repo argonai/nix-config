@@ -7,6 +7,12 @@
   pkgs,
   ...
 }:
+let
+  discordPackage = pkgs.discord.override {
+    withMoonlight = true;
+  moonlight = inputs.moonlight.packages.${pkgs.system}.moonlight;
+  };
+in
 {
   # You can import other home-manager modules here
   imports = [
@@ -64,12 +70,13 @@
   #    };
   # };
   # TODO: split packages more
+
   home.packages = with pkgs; [
     rust-analyzer
     hoppscotch
     gnumake
     unzip
-    discord
+    discordPackage
     lazygit
     clang
     ripgrep
@@ -96,7 +103,22 @@
     obsidian
     spotify
   ];
-
+  programs.moonlight = {
+    enable = true;
+    configs.stable = {
+        extensions = {
+          alwaysFocus = true;
+          moonbase = true;
+          dmFavorites = true;
+          pronouns = true;
+          betterEmbedsYT = true;
+          freeScreenShare = true;
+          };
+      #   repositories = [
+      #     "https://moonlight-mod.github.io/extensions-dist/repo.json"
+      # ];
+    };
+  };
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.kitty = {
@@ -109,26 +131,6 @@
     userEmail = "argonai@protonmail.com";
   };
 
-  programs.moonlight-mod = {
-    enable = true;
-    configs.stable = {
-
-      stable = {
-        extensions = {
-          allActivites.enabled = true;
-          alwaysFocus.enabled = true;
-
-          betterEmbedsYT = {
-            enabled = true;
-            config = {
-              fullDescription = false;
-              expandDescription = true;
-            };
-          };
-        };
-      };
-    };
-  };
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
