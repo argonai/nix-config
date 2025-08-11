@@ -17,7 +17,6 @@
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
   ];
     # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -110,7 +109,7 @@ pkgs.rust-bin.stable.latest.default
     config.common.default = "*";
   };
   services.printing.enable = true;
-  networking.hostName = "lilith";
+
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     argonai = {

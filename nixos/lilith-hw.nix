@@ -6,6 +6,9 @@
   ...
 }:
 {
+  imports = [
+  ./hardware-configuration-lilith.nix
+  ];
   hardware.tuxedo-drivers.enable = true;
   hardware.tuxedo-rs = {
     enable = true;
