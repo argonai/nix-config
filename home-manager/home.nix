@@ -101,6 +101,8 @@ in
     vistafonts
     obsidian
     spotify
+    signal-desktop
+    tor-browser
   ];
   programs.moonlight = {
     enable = true;
