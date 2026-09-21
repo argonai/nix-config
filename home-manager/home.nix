@@ -106,7 +106,14 @@ in
     mesen
     cc65
     furnace
+    sdl2-compat
   ];
+  xdg.desktopEntries.mesen ={
+    name = "Mesen2";
+    exec = "env SDL_VIDEODRIVER=x11 Mesen";
+    terminal = false;
+    categories = ["Game" "Development"];
+  };
   programs.vscode = {
     enable = true;
   };
