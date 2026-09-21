@@ -103,7 +103,13 @@ in
     spotify
     signal-desktop
     tor-browser
+    mesen
+    cc65
+    furnace
   ];
+  programs.vscode = {
+    enable = true;
+  };
   programs.moonlight = {
     enable = true;
     configs.stable = {
