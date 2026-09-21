@@ -32,7 +32,7 @@
       }
     ];
 
-    extraLuaConfig = ''
+    initLua = ''
       require('kanagawa').setup({
         theme = "wave",
         overrides = function(colors)

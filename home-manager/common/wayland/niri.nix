@@ -73,7 +73,7 @@ DEFAULT_AUDIO_SOURCE = null;
 
   services.swayidle = {
     enable = true;
-    systemdTarget = "graphical-session.target";
+    systemdTargets = ["graphical-session.target"];
     extraArgs = [ "-w" ];
     events = [
       {

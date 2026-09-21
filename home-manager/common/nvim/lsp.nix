@@ -8,14 +8,14 @@
   programs.neovim = {
     extraPackages = with pkgs; [
       asm-lsp
-      nodePackages.bash-language-server
+      bash-language-server
       ccls
       cmake-language-server
       vscode-langservers-extracted
       gopls
       kotlin-language-server
       lemminx
-      lexical
+      beamPackages.expert
       lua-language-server
       omnisharp-roslyn
       phpactor
@@ -23,14 +23,14 @@
       rust-analyzer
       rubyPackages.solargraph
       sqls
-      nodePackages.typescript-language-server
+      typescript-language-server
       tinymist
       zls
       zig
       black
       shfmt
       stylua
-      nodePackages.prettier
+      prettier
       clang-tools
       nixfmt-rfc-style
       coursier

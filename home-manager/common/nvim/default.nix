@@ -6,7 +6,7 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraLuaConfig = (builtins.readFile (./lua/keybinds.lua));
+    initLua = (builtins.readFile (./lua/keybinds.lua));
     extraPackages = with pkgs; [
       rcp
     ];
