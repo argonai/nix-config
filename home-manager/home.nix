@@ -87,18 +87,18 @@ in
     typescript-language-server
     astro-language-server
     inputs.zen-browser.packages."${system}".default
-    rofi-wayland
+    rofi
     playerctl
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     terminus_font
     dejavu_fonts
     nodejs_24
     #    powerline-fonts
     font-awesome
     corefonts
-    vistafonts
+    vista-fonts
     obsidian
     spotify
     signal-desktop
@@ -128,8 +128,10 @@ in
   };
   programs.git = {
     enable = true;
-    userName = "argonai";
-    userEmail = "argonai@protonmail.com";
+    settings.user = {
+    name = "argonai";
+    email = "argonai@protonmail.com";
+    };
   };
 
   programs.direnv = {
@@ -141,5 +143,5 @@ in
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 }

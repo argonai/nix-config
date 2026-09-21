@@ -10,7 +10,7 @@
       pkgs.replaceVars ./lua/ftplugin/java.lua {
         jdtls = pkgs.jdt-language-server;
         cachedir = config.xdg.cacheHome;
-        jdk23 = pkgs.jdk23_headless;
+        jdk23 = pkgs.jdk25_headless;
         javacfg = ./resource/java-eclipse.xml;
         javatest = pkgs.vscode-extensions.vscjava.vscode-java-test;
         javadebug = pkgs.vscode-extensions.vscjava.vscode-java-debug;

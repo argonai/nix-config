@@ -7,7 +7,7 @@
 {
   home.packages = with pkgs; [
     dex
-    glfw-wayland
+    glfw
     grim
     eog
     lxqt.lxqt-openssh-askpass
