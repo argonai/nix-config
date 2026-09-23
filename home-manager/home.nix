@@ -107,6 +107,22 @@ in
     cc65
     furnace
     sdl2-compat
+    cmake
+    python3
+    ninja
+    jetbrains-toolbox
+    # (jetbrains.plugins.addPlugins jetbrains.rider [
+    #   (pkgs.stdenv.mkDerivation {
+    #     name = "IdeaVIM";
+    #     version = "2.46.2";
+    #     src = pkgs.fetchurl { url = "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=1149038"; hash = "sha256-nwUjpNPbuPTU6LtbeBtYDmnR/wQYH8iHiRI011GKvRY="; };
+    #     dontUnpack = true;
+    #     installPhase = ''
+    #       mkdir -p $out
+    #       cp $src $out
+    #     '';
+    #   })
+    # ])
   ];
   xdg.desktopEntries.mesen ={
     name = "Mesen2";
@@ -151,7 +167,6 @@ in
     enable = true;
     enableZshIntegration = true;
   };
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
