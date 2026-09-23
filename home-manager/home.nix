@@ -70,7 +70,7 @@ in
   # };
   # TODO: split packages more
   home.file.".ideavimrc" = {
-    source = ./common/conf/ideavimrc;
+    source = ./conf/ideavimrc;
     force = true;
   };
 
