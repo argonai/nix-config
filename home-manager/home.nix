@@ -69,6 +69,10 @@ in
   #    };
   # };
   # TODO: split packages more
+  home.file.".ideavimrc" = {
+    source = ./common/conf/ideavimrc;
+    force = true;
+  };
 
   home.packages = with pkgs; [
     rust-analyzer
